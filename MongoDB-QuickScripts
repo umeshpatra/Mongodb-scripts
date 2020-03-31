@@ -17,3 +17,12 @@ db.getCollection(‘'FunnelHistories'’).find({‘CacheIndex.PipDataList.1': {$
 
 Faster way to see the Json schema for one object instead of waiting for the entire collection to be loaded-
 db.getCollection('FunnelHistories').find({).limit(1)
+
+Script to find with $and, $in, Objectid -
+db.getCollection('FunnelHistories').find({$and:[
+{"CacheIndex.PipDataList":{$in:["5e206c2e29b86a616e825b21"]}},
+{"FunnelId":"5c336e865b67910ef806052b"},
+{"_id":ObjectId("5e415759e546df2208d04005")},
+{"UpdatedData.PipDataList._id":"5e206c2eb09c7cf6bc9effa3"}
+]})
+
