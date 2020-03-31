@@ -18,6 +18,9 @@ db.getCollection(‘'FunnelHistories'’).find({‘CacheIndex.PipDataList.1': {$
 Faster way to see the Json schema for one object instead of waiting for the entire collection to be loaded-
 db.getCollection('FunnelHistories').find({}).limit(1)
 
+Faster way to see the object count during bulk update (including the criteria) instead of waiting for the entire collection to be loaded-
+db.getCollection('FunnelHistories').find({}).count()
+
 Script to find with $and, $in, Objectid -
 db.getCollection('FunnelHistories').find({$and:[
 {"CacheIndex.PipDataList":{$in:["5e206c2e29b86a616e825b21"]}},
