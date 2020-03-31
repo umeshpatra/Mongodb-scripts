@@ -1,0 +1,19 @@
+local dump one or more collection-
+mongodump --host localhost --port 27017  --db fmdev --collection FunnelHistories -o c:\testarea\localfmdev
+
+remote dump-
+mongodump --host sww-weis-dev.shell.com --port 27456 --username dinesh.prasad --password Password.1 --db fmdev -o c:\testarea\fm --authenticationDatabase admin
+
+Restore one or more collection in localhost-
+mongorestore --host localhost --port 27017  --db fmdevhist --collection FunnelHistories  c:\testarea\localfmdev\fmdev\FunnelHistories.bson
+
+mongorestore --host sww-weis-dev.shell.com:27456 --username pradeep-k.singh --password Password.1 --authenticationDatabase admin --gzip --db FMUAT "C:\FM_Prod_Bkp08112019\funman-sso" 
+
+Date Comparision (greaterthan, lessthan, equalto) :
+db.getCollection('FunnelHistories').find({UpdateDate:{$gt:new ISODate("2019-06-30")}})
+
+Find the collection with array has atleast 1 or more element -
+db.getCollection(‘'FunnelHistories'’).find({‘CacheIndex.PipDataList.1': {$exists: true}})
+
+Faster way to see the Json schema for one object instead of waiting for the entire collection to be loaded-
+db.getCollection('FunnelHistories').find({).limit(1)
